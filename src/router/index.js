@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import SearchPage from '../views/SearchPage.vue'
 import ResultPage from '../views/ResultPage.vue'
+import AnimeSingle from '../views/AnimeSingle.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/find',
     name: 'ResultPage',
     component: ResultPage
+  },
+  {
+    path: '/anime/:id',
+    name: 'AnimePage',
+    component: AnimeSingle
   }
 ]
 
