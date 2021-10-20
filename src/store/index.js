@@ -64,6 +64,7 @@ export default new Vuex.Store({
         axios({
           url: `/anime?id=${payload}&page=1`
         }).then(resp => {
+          console.log(resp.data)
           resolve(resp.data)
         }).catch(err => {
           reject(err.response)
