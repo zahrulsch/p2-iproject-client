@@ -9,4 +9,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+#app {
+  font-family: 'Lato', sans-serif !important;
+}
 </style>
