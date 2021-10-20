@@ -1,6 +1,6 @@
 <template>
   <div class="col">
-    <router-link :to="`/anime/${anime.mal_id}`">
+    <router-link :to="`/anime/${anime.mal_id}/episodes`">
       <div class="post">
         <div class="post-score">
           <span>{{anime.score}}</span>
