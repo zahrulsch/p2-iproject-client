@@ -2,6 +2,7 @@
   <div class='result-page'>
     <Navbar />
     <div v-if="!needLoader" class="container">
+      <search-form/>
       <div class="my-3">
         <h4 class="category-tags">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
@@ -41,6 +42,7 @@ import Error from '../components/Error.vue'
 import Loader from '../components/Loader.vue'
 import AnimeCard from '../components/AnimeCard.vue'
 import MangaCard from '../components/MangaCard.vue'
+import SearchForm from '../components/SearchForm.vue'
 
 export default {
   name: 'ResultPage',
@@ -65,7 +67,8 @@ export default {
     Error,
     Loader,
     AnimeCard,
-    MangaCard
+    MangaCard,
+    SearchForm
   },
   created: function () {
     this.needLoader = true
