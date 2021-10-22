@@ -70,6 +70,39 @@ export default new Vuex.Store({
           reject(err.response)
         })
       })
+    },
+    getMangaDetail: function (_, payload) {
+      return new Promise((resolve, reject) => {
+        axios({
+          url: '/manga-detail/' + payload
+        }).then(resp => {
+          resolve(resp.data)
+        }).catch(err => {
+          reject(err.response)
+        })
+      })
+    },
+    getMangaChapters: function (_, payload) {
+      return new Promise((resolve, reject) => {
+        axios({
+          url: '/manga-chapters/' + payload
+        }).then(resp => {
+          resolve(resp.data)
+        }).catch(err => {
+          reject(err.response)
+        })
+      })
+    },
+    getSingleChapter: function (_, payload) {
+      return new Promise((resolve, reject) => {
+        axios({
+          url: '/manga-chapter/' + payload
+        }).then(resp => {
+          resolve(resp.data)
+        }).catch(err => {
+          reject(err.response)
+        })
+      })
     }
   },
   modules: {

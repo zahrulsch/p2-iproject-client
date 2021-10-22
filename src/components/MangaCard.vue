@@ -1,5 +1,5 @@
 <template>
-  <div class="col">
+  <router-link :to="`/manga/${manga.id}`" class="col">
     <div class="post">
       <div class="post-image">
         <img :src="manga.thumbnail" :alt="manga.title">
@@ -9,7 +9,7 @@
       </div>
       <MangaCardStatus :status="manga.status" />
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>

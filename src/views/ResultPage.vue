@@ -2,6 +2,7 @@
   <div class='result-page'>
     <Navbar />
     <div v-if="!needLoader" class="container">
+      <search-form @query="fetch"/>
       <div class="my-3">
         <h4 class="category-tags">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-film" viewBox="0 0 16 16">
@@ -41,6 +42,7 @@ import Error from '../components/Error.vue'
 import Loader from '../components/Loader.vue'
 import AnimeCard from '../components/AnimeCard.vue'
 import MangaCard from '../components/MangaCard.vue'
+import SearchForm from '../components/SearchForm.vue'
 
 export default {
   name: 'ResultPage',
@@ -55,9 +57,29 @@ export default {
       needLoader: false
     }
   },
-  computed: {
-    query: function () {
-      return this.$route.query
+  methods: {
+    fetch: function (query) {
+      this.title = query
+      this.needLoader = true
+      this.$store.dispatch('searchAnimes', {
+        page: this.page,
+        limit: this.limit,
+        title: this.title
+      }).then(data => {
+        this.needLoader = false
+        this.animes = data
+      }).catch(err => {
+        this.needLoader = false
+        console.log(err)
+        this.loadError = true
+      })
+      this.$store.dispatch('searchMangas', {
+        title: this.title
+      }).then(data => {
+        this.mangas = data
+      }).catch(_ => {
+        this.loadError = true
+      })
     }
   },
   components: {
@@ -65,34 +87,11 @@ export default {
     Error,
     Loader,
     AnimeCard,
-    MangaCard
+    MangaCard,
+    SearchForm
   },
   created: function () {
-    this.needLoader = true
-    this.$store.dispatch('searchAnimes', {
-      page: this.page,
-      limit: this.limit,
-      title: this.title
-    }).then(data => {
-      this.needLoader = false
-      data.forEach(d => {
-        this.animes.push(d)
-      })
-    }).catch(err => {
-      this.needLoader = false
-      console.log(err)
-      this.loadError = true
-    })
-    this.$store.dispatch('searchMangas', {
-      title: this.title
-    }).then(data => {
-      console.log(data)
-      data.forEach(d => {
-        this.mangas.push(d)
-      })
-    }).catch(_ => {
-      this.loadError = true
-    })
+    this.fetch(this.title)
   }
 }
 </script>

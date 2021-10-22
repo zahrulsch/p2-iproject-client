@@ -4,6 +4,8 @@ import SearchPage from '../views/SearchPage.vue'
 import ResultPage from '../views/ResultPage.vue'
 import AnimeSingle from '../views/AnimeSingle.vue'
 import AnimeEpisodes from '../components/AnimeEpisodes.vue'
+import MangaSingle from '../components/MangaSingle'
+import MangaChapter from '../components/MangaChapter'
 // import AnimeEpisode from '../components/AnimeEpisode.vue'
 
 Vue.use(VueRouter)
@@ -29,12 +31,17 @@ const routes = [
         name: 'AnimeEpisodes',
         component: AnimeEpisodes
       }
-      // {
-      //   path: 'episode/:epId',
-      //   name: 'AnimeEpisode',
-      //   component: AnimeEpisode
-      // }
     ]
+  },
+  {
+    path: '/manga/:id',
+    name: 'MangaSingle',
+    component: MangaSingle
+  },
+  {
+    path: '/manga/:id/c/:cid',
+    name: 'MangaChapter',
+    component: MangaChapter
   }
 ]
 
