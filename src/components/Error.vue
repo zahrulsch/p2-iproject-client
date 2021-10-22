@@ -1,6 +1,7 @@
 <template>
   <div class="row row-cols-1 d-flex flex-column error justify-content-center">
     <h4 class="text-center">Oops! Internal server error</h4>
+    <span class="text-center">Failed in request your data</span>
     <span class="text-center">Try to reload this page...</span>
   </div>
 </template>
